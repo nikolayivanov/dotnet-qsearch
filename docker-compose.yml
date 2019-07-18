@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  nosql.data:
+    image: mongo
+    ports:
+    - "27017:27017"
+    volumes:
+    - mongodata1:/data/db
+  qsearch.web:
+    image: ${DOCKER_REGISTRY-}qsearchweb
+    depends_on:
+      - nosql.data
+    build:
+      context: .
+      dockerfile: Qsearch.Web/Dockerfile    
+
+  qsearch.api:
+    image: ${DOCKER_REGISTRY-}qsearchapi
+    build:
+      context: .
+      dockerfile: Qsearch.Api/Dockerfile
+volumes:
+  mongodata1:

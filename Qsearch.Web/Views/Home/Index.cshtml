@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Search";
+}
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+
+<div class="row">
+    <form method="POST" class="form" role="form">
+        <div class="input-group">
+            @Html.TextBox("query", string.Empty, new { id = "query", placeholder = "Search", aria_label = "Search Ajax", @class = "form-control" })
+            <span class="input-group-btn">
+                <button class="btn btn-outline-success" type="submit"
+                        onclick="postQuestionsViaAjax(); return false;">
+                    Search
+                </button>
+            </span>
+        </div>
+    </form>
+
+</div>
+<div id="spinner" class="spinner"></div>
+<div id="div-questions" class="col-md-12"></div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var SearchApiUrl = "@Configuration["SearchApiUrl"]";
+    </script>
+}
