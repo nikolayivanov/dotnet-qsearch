@@ -1,0 +1,40 @@
+<div class="row">
+  <form method="POST" class="form" role="form">
+    <div class="input-group">
+      <input name="query" #query placeholder = "Search" aria_label = "Search Ajax" class = "form-control" />
+      <span class="input-group-btn">
+        <button class="btn btn-outline-success" type="submit"
+                (click)="getQuestionsFromApi(query.value);">
+          Search
+        </button> 
+      </span>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="showspinner" id="spinner" class="spinner"></div>
+
+<h4 *ngIf="questions && questions.length == 0">0 questions</h4>
+
+<div id="div-questions" class="col-md-12" *ngIf="questions && questions.length > 0">
+  <div class="row" *ngFor="let question of questions">
+    <div class="col-md-2">
+      <div class="alert {{question.IsAnswered ? 'alert-success' : 'alert-info'}}"
+           role="alert">          
+        <div *ngIf="question.IsAnswered"><span class="glyphicon glyphicon-ok"></span> Answered</div>
+        <span *ngIf="!question.IsAnswered">Not Answered</span>
+        
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div>
+        <h4>
+          <a href="{{question.link}}" class="question-hyperlink">{{question.title}}</a>
+        </h4>
+      </div>
+      <div>
+        Asked At <span><b>{{question.CreationDate}}</b></span> By <span><b>{{question.OwnerDisplayName}}</b></span>
+      </div>
+    </div>
+  </div>
+</div>

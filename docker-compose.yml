@@ -20,5 +20,11 @@ services:
     build:
       context: .
       dockerfile: Qsearch.Api/Dockerfile
+  qsearch.webang:
+    image: ${DOCKER_REGISTRY-}qsearchwebang
+    build:
+      context: .
+      dockerfile: Qsearch.WebAng/Dockerfile
+
 volumes:
   mongodata1:
