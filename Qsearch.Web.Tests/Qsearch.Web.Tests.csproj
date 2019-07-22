@@ -15,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Qsearch.Api\Qsearch.Api.csproj" />
+    <ProjectReference Include="..\Qsearch.Web\Qsearch.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>    
   </ItemGroup>
 
 </Project>
