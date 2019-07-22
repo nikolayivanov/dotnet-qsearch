@@ -24,7 +24,7 @@ namespace Qsearch.Api.Controllers
 
         [HttpGet]
         [Route("search")]
-        public async Task<ActionResult<IEnumerable<SearchResult>>> Search([FromQuery]string query)
+        public async Task<ActionResult<List<SearchResult>>> Search([FromQuery]string query)
         {
             if (string.IsNullOrEmpty(query))
             {

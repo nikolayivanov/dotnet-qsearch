@@ -26,7 +26,7 @@ namespace QSearch.Core.Impl
         {
             var client = new MongoClient(this.connectionstr);
             var db = client.GetDatabase(this.databaseName);
-            var collection = db.GetCollection<BsonDocument>(colnameSearhResults);            
+            var collection = db.GetCollection<BsonDocument>(colnameSearhResults);
             var doc = new BsonDocument () { 
                 { "query", query.QueryText.ToLower() },
                 { "result", GetBsonDocumentArray(result) }
